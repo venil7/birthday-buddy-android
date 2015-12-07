@@ -1,5 +1,6 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
+import android.nfc.FormatException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class AddPerson extends AppCompatActivity {
+public class AddPersonActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,16 @@ public class AddPerson extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final EditText name = (EditText) findViewById(R.id.name);
-                final DatePicker birthdate = (DatePicker) findViewById(R.id.birthdate);
-                final GregorianCalendar date = AddPerson.getDateFromDatePicker(birthdate);
-                final BuddyModel buddy = new BuddyModel(name.getText().toString(), date);
-                Toast.makeText(AddPerson.this, buddy.toString(), Toast.LENGTH_SHORT).show();
+                BuddyModel buddy = null;
+                try {
+                    final EditText name = (EditText) findViewById(R.id.name);
+                    final EditText date = (EditText) findViewById(R.id.birthdate);
+                    buddy = new BuddyModel(name.getText().toString(), date.getText().toString());
+                    Toast.makeText(AddPersonActivity.this, buddy.toString(), Toast.LENGTH_SHORT).show();
+                }
+                catch (FormatException exception) {
+                    Toast.makeText(AddPersonActivity.this, "name or date of birth missing", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent addPersonIntent = new Intent(MainActivity.this, AddPerson.class);
+            Intent addPersonIntent = new Intent(MainActivity.this, AddPersonActivity.class);
             startActivity(addPersonIntent);
             }
         });

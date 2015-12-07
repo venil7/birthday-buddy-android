@@ -1,29 +1,44 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
-import java.util.GregorianCalendar;
+import android.nfc.FormatException;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by darkruby on 06/12/15.
  */
 public class BuddyModel {
-    String _name;
-    GregorianCalendar _birthdate;
+    public String Name;
+    public Date Birthdate;
 
-    public BuddyModel(String name, GregorianCalendar birthdate) {
-        this._name = name;
-        this._birthdate = birthdate;
+    public BuddyModel(String name, String birthdate) throws FormatException {
+        if (name.trim() == "") {
+            throw new FormatException();
+        }
+        this.Name = name;
+        Date date = this.convertFromString(birthdate);
+        if (date != null) {
+            this.Birthdate = date;
+        } else throw new FormatException();
     }
 
-    public String getName() {
-        return this._name;
-    }
+    private Date convertFromString(String birthdate) {
+        Date date = null;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.UK);
 
-    public GregorianCalendar getBirthdate() {
-        return this._birthdate;
+        try {
+            date = format.parse(birthdate);
+        } catch (ParseException exception) {
+            ;
+        }
+        return date;
     }
 
     @Override
     public String toString() {
-        return this.getName() + " " + this._birthdate.toString();
+        return this.Name + " - " + this.Birthdate.toString();
     }
 }

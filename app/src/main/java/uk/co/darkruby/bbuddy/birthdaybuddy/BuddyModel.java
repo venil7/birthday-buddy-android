@@ -2,15 +2,13 @@ package uk.co.darkruby.bbuddy.birthdaybuddy;
 
 import android.nfc.FormatException;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by darkruby on 06/12/15.
- */
-public class BuddyModel {
+public class BuddyModel implements Serializable {
     public String Name;
     public Date Birthdate;
 

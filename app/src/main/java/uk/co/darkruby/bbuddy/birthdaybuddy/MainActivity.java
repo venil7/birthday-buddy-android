@@ -8,8 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final int ADD_PERSON = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +26,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             Intent addPersonIntent = new Intent(MainActivity.this, AddPersonActivity.class);
-            startActivity(addPersonIntent);
+            startActivityForResult(addPersonIntent, ADD_PERSON);
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ADD_PERSON) {
+            if (resultCode == RESULT_OK) {
+                BuddyModel buddy = (BuddyModel) data.getSerializableExtra("buddy");
+                Toast.makeText(MainActivity.this, buddy.toString(), Toast.LENGTH_SHORT)
+                    .show();
+            }
+        }
     }
 
     @Override

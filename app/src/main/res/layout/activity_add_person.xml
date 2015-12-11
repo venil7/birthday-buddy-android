@@ -34,12 +34,6 @@
             android:inputType="date"
             android:hint="dd/mm/yyyy"/>
 
-        <!--<DatePicker-->
-            <!--android:id="@+id/birthdate"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_below="@+id/title"-->
-            <!--android:layout_height="wrap_content"/>-->
-
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/addbtn"
             android:layout_width="wrap_content"

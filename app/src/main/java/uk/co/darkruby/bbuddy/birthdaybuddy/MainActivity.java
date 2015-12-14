@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -51,10 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
         this.initializeBuddiesList();
 
-        ListView listView = (ListView) findViewById(R.id.main_list);
-        ArrayAdapter<BuddyModel> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.buddy_list_item, this.buddiesList);
-//        listView.setAdapter(adapter);
+        Log.d("MainActivity", "item count" + this.buddiesList.size());
 
+        ListView listView = (ListView) findViewById(R.id.main_list);
+        BuddyListAdapter adapter = new BuddyListAdapter(MainActivity.this, R.layout.buddy_list_item, this.buddiesList);
+        listView.setAdapter(adapter);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

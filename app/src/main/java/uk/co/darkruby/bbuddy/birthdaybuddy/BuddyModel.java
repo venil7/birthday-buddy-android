@@ -9,17 +9,17 @@ import java.util.Date;
 import java.util.Locale;
 
 public class BuddyModel implements Serializable {
-    public String Name;
-    public Date Birthdate;
+    public String name;
+    public Date birthdate;
 
     public BuddyModel(String name, String birthdate) throws FormatException {
         if (name.trim() == "") {
             throw new FormatException();
         }
-        this.Name = name;
+        this.name = name;
         Date date = this.convertFromString(birthdate);
         if (date != null) {
-            this.Birthdate = date;
+            this.birthdate = date;
         } else throw new FormatException();
     }
 
@@ -37,6 +37,6 @@ public class BuddyModel implements Serializable {
 
     @Override
     public String toString() {
-        return this.Name + " - " + this.Birthdate.toString();
+        return this.name;// + " - " + this.birthdate.toString();
     }
 }

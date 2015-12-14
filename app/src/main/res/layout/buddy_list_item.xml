@@ -3,23 +3,32 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:paddingLeft="5dp"
-        android:textColor="@color/colorPrimary">
-    </TextView>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/face_monkey"
+        android:layout_alignBottom="@+id/rowValue" />
 
     <TextView
-        android:id="@+id/value"
+        android:id="@+id/rowLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/label"
+        android:layout_toRightOf="@+id/avatar"
+        android:textSize="30sp"
+        android:paddingLeft="5dp"
+        android:textColor="@color/colorPrimary"
+        android:text="Some Name" />
+
+    <TextView
+        android:id="@+id/rowValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rowLabel"
+        android:layout_toRightOf="@+id/avatar"
         android:textSize="12sp"
         android:paddingLeft="5dp"
-        android:textColor="@color/colorAccent">
-    </TextView>
+        android:text="22/03/1982"
+        android:textColor="@color/colorAccent" />
 
 </RelativeLayout>

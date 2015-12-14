@@ -16,27 +16,21 @@ public class AddPersonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
-
-        //add button handler
-        final Button addButton = (Button) findViewById(R.id.addbtn);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            BuddyModel buddy = null;
-            try {
-                final EditText name = (EditText) findViewById(R.id.name);
-                final EditText date = (EditText) findViewById(R.id.birthdate);
-                buddy = new BuddyModel(name.getText().toString(), date.getText().toString());
-                Intent resultData = new Intent();
-                resultData.putExtra("buddy", buddy);
-                setResult(Activity.RESULT_OK, resultData);
-                finish();
-            }
-            catch (FormatException exception) {
-                Toast.makeText(AddPersonActivity.this, "name or date of birth missing", Toast.LENGTH_SHORT).show();
-            }
-            }
-        });
     }
 
+    public void onAddClick(View view) {
+        BuddyModel buddy = null;
+        try {
+            final EditText name = (EditText) findViewById(R.id.name);
+            final EditText date = (EditText) findViewById(R.id.birthdate);
+            buddy = new BuddyModel(name.getText().toString(), date.getText().toString());
+            Intent resultData = new Intent();
+            resultData.putExtra("buddy", buddy);
+            setResult(Activity.RESULT_OK, resultData);
+            finish();
+        }
+        catch (FormatException exception) {
+            Toast.makeText(AddPersonActivity.this, "name or date of birth missing", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

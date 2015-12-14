@@ -37,15 +37,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            Intent addPersonIntent = new Intent(MainActivity.this, AddPersonActivity.class);
-            startActivityForResult(addPersonIntent, ADD_PERSON);
-            }
-        });
-
         this.prefs = getPreferences(MODE_PRIVATE);
         this.prefEditor = this.prefs.edit();
         this.gson = new Gson();
@@ -115,4 +106,13 @@ public class MainActivity extends AppCompatActivity {
         this.addToBuddiesList(buddy, true);
     }
 
+    public void onBuddyAddClick(View view) {
+        Intent addPersonIntent = new Intent(this, AddPersonActivity.class);
+        this.startActivityForResult(addPersonIntent, ADD_PERSON);
+    }
+
+    public void onBuddyItemClick(View view) {
+        Intent buddyDetailsIntent = new Intent(this, BuddyDetailsActivity.class);
+        this.startActivity(buddyDetailsIntent);
+    }
 }

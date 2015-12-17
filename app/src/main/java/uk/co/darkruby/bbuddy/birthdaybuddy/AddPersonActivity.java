@@ -25,7 +25,7 @@ public class AddPersonActivity extends AppCompatActivity {
             final EditText date = (EditText) findViewById(R.id.birthdate);
             buddy = new BuddyModel(name.getText().toString(), date.getText().toString());
             Intent resultData = new Intent();
-            resultData.putExtra("buddy", buddy);
+            resultData.putExtra(MainActivity.BUDDY, buddy);
             setResult(Activity.RESULT_OK, resultData);
             finish();
         }

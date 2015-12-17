@@ -1,16 +1,17 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,16 +20,18 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
+    public static final String BUDDY = "buddy";
     private final int ADD_PERSON = 1;
     private final String BUDDIES_KEY = "buddies";
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefEditor;
     private Gson gson;
     private ArrayList<BuddyModel> buddiesList;
+    private BuddyListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("MainActivity", "item count" + this.buddiesList.size());
 
+        this.adapter = new BuddyListAdapter(MainActivity.this, R.layout.buddy_list_item, this.buddiesList);
+
         ListView listView = (ListView) findViewById(R.id.main_list);
-        BuddyListAdapter adapter = new BuddyListAdapter(MainActivity.this, R.layout.buddy_list_item, this.buddiesList);
-        listView.setAdapter(adapter);
+        listView.setAdapter(this.adapter);
+        listView.setOnItemClickListener(this);
+        listView.setOnItemLongClickListener(this);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ADD_PERSON) {
             if (resultCode == RESULT_OK) {
-                BuddyModel buddy = (BuddyModel) data.getSerializableExtra("buddy");
+                BuddyModel buddy = (BuddyModel) data.getSerializableExtra(BUDDY);
                 MainActivity.this.addToBuddiesList(buddy);
             }
         }
@@ -84,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
     private void initializeBuddiesList() {
         this.buddiesList = new ArrayList<>();
         String buddiesListString = this.prefs.getString(BUDDIES_KEY, this.gson.toJson(this.buddiesList));
-        Type type = new TypeToken<ArrayList<BuddyModel>>(){}.getType();
+        Type type = new TypeToken<ArrayList<BuddyModel>>() {
+        }.getType();
         ArrayList<BuddyModel> items = this.gson.fromJson(buddiesListString, type);
         this.buddiesList.addAll(items);
     }
@@ -111,8 +118,28 @@ public class MainActivity extends AppCompatActivity {
         this.startActivityForResult(addPersonIntent, ADD_PERSON);
     }
 
-    public void onBuddyItemClick(View view) {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent buddyDetailsIntent = new Intent(this, BuddyDetailsActivity.class);
+        buddyDetailsIntent.putExtra(BUDDY, this.buddiesList.get(position));
         this.startActivity(buddyDetailsIntent);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        new AlertDialog.Builder(this)
+            .setTitle(R.string.delete_title)
+            .setMessage(R.string.delete_buddy_confirm)
+            .setIcon(android.R.drawable.ic_delete)
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    MainActivity.this.buddiesList.remove(position);
+                    MainActivity.this.adapter.notifyDataSetChanged();
+                    MainActivity.this.persistBuddiesList();
+                    Toast.makeText(MainActivity.this, R.string.delete_confirmed, Toast.LENGTH_SHORT).show();
+                }
+            })
+            .setNegativeButton(android.R.string.no, null).show();
+        return true;
     }
 }

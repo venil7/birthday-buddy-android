@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     public static final String BUDDY = "buddy";
+
     private final int ADD_PERSON = 1;
     private final String BUDDIES_KEY = "buddies";
     private SharedPreferences prefs;
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onBuddyAddClick(View view) {
-        Intent addPersonIntent = new Intent(this, AddPersonActivity.class);
+        Intent addPersonIntent = new Intent(this, AddBuddyActivity.class);
         this.startActivityForResult(addPersonIntent, ADD_PERSON);
     }
 

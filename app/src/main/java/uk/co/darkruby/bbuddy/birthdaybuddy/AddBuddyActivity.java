@@ -6,16 +6,15 @@ import android.nfc.FormatException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddPersonActivity extends AppCompatActivity {
+public class AddBuddyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_person);
+        setContentView(R.layout.activity_add_buddy);
     }
 
     public void onAddClick(View view) {
@@ -30,7 +29,7 @@ public class AddPersonActivity extends AppCompatActivity {
             finish();
         }
         catch (FormatException exception) {
-            Toast.makeText(AddPersonActivity.this, "name or date of birth missing", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddBuddyActivity.this, "name or date of birth missing", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddPersonActivity" />
+        <activity android:name=".AddBuddyActivity" />
         <activity android:name=".BuddyDetailsActivity"></activity>
     </application>
 

@@ -2,7 +2,6 @@ package uk.co.darkruby.bbuddy.birthdaybuddy;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 public class BuddyDetailsActivity extends AppCompatActivity {
 
@@ -15,7 +14,7 @@ public class BuddyDetailsActivity extends AppCompatActivity {
 
         this.buddy = (BuddyModel) getIntent().getSerializableExtra(MainActivity.BUDDY);
 
-        TextView tv = (TextView) findViewById(R.id.detailsText);
-        tv.setText(this.buddy.name);
+//        TextView tv = (TextView) findViewById(R.id.detailsText);
+//        tv.setText(this.buddy.name);
     }
 }

@@ -9,15 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="uk.co.darkruby.bbuddy.birthdaybuddy.BuddyDetailsActivity">
 
-    <TextView
-        android:id="@+id/detailsText"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="some text"/>
-
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/detailsPager"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/detailsPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

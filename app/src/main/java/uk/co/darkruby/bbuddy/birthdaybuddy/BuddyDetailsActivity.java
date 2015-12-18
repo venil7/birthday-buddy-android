@@ -1,9 +1,11 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class BuddyDetailsActivity extends AppCompatActivity {
+    //http://manishkpr.webheavens.com/android-viewpager-example/
 
     private BuddyModel buddy;
 
@@ -14,7 +16,9 @@ public class BuddyDetailsActivity extends AppCompatActivity {
 
         this.buddy = (BuddyModel) getIntent().getSerializableExtra(MainActivity.BUDDY);
 
-//        TextView tv = (TextView) findViewById(R.id.detailsText);
-//        tv.setText(this.buddy.name);
+        ViewPager pager = (ViewPager) findViewById(R.id.detailsPager);
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+
+        pager.setAdapter(adapter);
     }
 }

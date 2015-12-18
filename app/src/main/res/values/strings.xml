@@ -4,4 +4,5 @@
     <string name="delete_buddy_confirm">Delete this buddy?</string>
     <string name="delete_title">Delete buddy?</string>
     <string name="delete_confirmed">Deleted...</string>
+    <string name="action_import_contacts">Import contacts..</string>
 </resources>

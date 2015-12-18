@@ -1,10 +1,14 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,12 +18,15 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.database.Cursor;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
@@ -75,17 +82,53 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id) {
+            case R.id.action_settings: {
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            case R.id.action_import_contacts: {
+                Toast.makeText(this, "Import", Toast.LENGTH_SHORT).show();
+                this.importContactsBirthdays();
+                return  true;
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
         }
 
-        return super.onOptionsItemSelected(item);
+    }
+
+    private void  importContactsBirthdays() {
+        Uri uri = ContactsContract.Data.CONTENT_URI;
+
+        String[] projection = new String[] {
+                ContactsContract.Contacts.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Event.CONTACT_ID,
+                ContactsContract.CommonDataKinds.Event.START_DATE
+        };
+
+        String where =
+                ContactsContract.Data.MIMETYPE + "= ? AND " +
+                        ContactsContract.CommonDataKinds.Event.TYPE + "=" +
+                        ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY;
+        String[] selectionArgs = new String[] {
+                ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE
+        };
+        String sortOrder = null;
+        Cursor cursor =  managedQuery(uri, projection, where, selectionArgs, sortOrder);
+        int bDayColumn = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Event.START_DATE);
+        while (cursor.moveToNext()) {
+            String bDay = cursor.getString(bDayColumn);
+            Log.d("MainActivity", "Birthday: " + bDay);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void initializeBuddiesList() {

@@ -1,7 +1,6 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -25,8 +24,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
@@ -142,6 +139,8 @@ public class MainActivity extends AppCompatActivity
 
     private void addToBuddiesList(BuddyModel buddy, boolean persist) {
         this.buddiesList.add(buddy);
+        this.adapter.notifyDataSetChanged();
+
         if (persist) {
             this.persistBuddiesList();
         }

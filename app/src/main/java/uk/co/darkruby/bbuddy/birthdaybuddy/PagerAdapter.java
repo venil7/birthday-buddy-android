@@ -5,22 +5,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.util.ArrayList;
+
 public class PagerAdapter extends FragmentPagerAdapter {
+    private final ArrayList<BirthdayDataProvider> providers;
 
-//    private Context context;
-
-    public PagerAdapter(FragmentManager fm) {
+    public PagerAdapter(FragmentManager fm, ArrayList<BirthdayDataProvider> providers) {
         super(fm);
+        this.providers = providers;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment f = new Fragment();
-        return f;
+        BirthdayDataProvider provider = this.providers.get(position);
+        Fragment fragment = provider.getFragment();
+        return fragment;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return this.providers.size();
     }
 }

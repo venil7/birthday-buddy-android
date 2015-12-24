@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class MartianBirthdayDataProvider extends BirthdayDataProviderBase {
-    public MartianBirthdayDataProvider() {
-        super();
+    public MartianBirthdayDataProvider(BuddyModel buddy) {
+        super(buddy);
     }
 
     @Nullable

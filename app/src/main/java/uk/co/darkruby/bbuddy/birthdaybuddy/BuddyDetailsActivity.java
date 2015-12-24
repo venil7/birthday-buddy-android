@@ -27,8 +27,8 @@ public class BuddyDetailsActivity extends AppCompatActivity {
     ArrayList<BirthdayDataProvider> getProviders() {
 
         ArrayList<BirthdayDataProvider> providers = new ArrayList<>();
-        providers.add(new MartianBirthdayDataProvider());
-        providers.add(new MoonBirthdayDataProvider());
+        providers.add(new MartianBirthdayDataProvider(this.buddy));
+        providers.add(new MoonBirthdayDataProvider(this.buddy));
 
         return providers;
     }

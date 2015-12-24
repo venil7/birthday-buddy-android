@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class MoonBirthdayDataProvider extends BirthdayDataProviderBase {
-    public MoonBirthdayDataProvider() {
-        super();
+    public MoonBirthdayDataProvider(BuddyModel buddy) {
+        super(buddy);
     }
 
     @Nullable

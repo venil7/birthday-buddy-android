@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Birthday Buddy</string>
+    <string name="app_name">How Old?</string>
     <string name="action_settings">Settings</string>
     <string name="delete_buddy_confirm">Delete this buddy?</string>
     <string name="delete_title">Delete buddy?</string>

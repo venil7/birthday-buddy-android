@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MoonBirthdayDataProvider extends BirthdayDataProviderBase {
-    public MoonBirthdayDataProvider(BuddyModel buddy) {
+public class MoonDataProvider extends BirthdayDataProviderBase {
+    private final int YEAR_LENGTH = 29;
+
+    public MoonDataProvider(BuddyModel buddy) {
         super(buddy);
     }
 
@@ -15,5 +17,10 @@ public class MoonBirthdayDataProvider extends BirthdayDataProviderBase {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.moon_data, container, false);
+    }
+
+    public int getMoonYears() {
+        int days = this.getDaysTillNow();
+        return days / YEAR_LENGTH;
     }
 }

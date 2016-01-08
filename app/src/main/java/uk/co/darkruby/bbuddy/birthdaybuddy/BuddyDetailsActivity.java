@@ -25,10 +25,17 @@ public class BuddyDetailsActivity extends AppCompatActivity {
     }
 
     ArrayList<BirthdayDataProvider> getProviders() {
+        final BuddyModel buddy = this.buddy;
 
-        ArrayList<BirthdayDataProvider> providers = new ArrayList<>();
-        providers.add(new MartianBirthdayDataProvider(this.buddy));
-        providers.add(new MoonBirthdayDataProvider(this.buddy));
+        ArrayList<BirthdayDataProvider> providers = new ArrayList() {
+            {
+                add(new MarsDataProvider(buddy));
+                add(new MoonDataProvider(buddy));
+                add(new VenusDataProvider(buddy));
+                add(new CatDataProvider(buddy));
+                add(new DogDataProvider(buddy));
+            }
+        };
 
         return providers;
     }

@@ -6,6 +6,7 @@
     android:background="@drawable/mars_landscape">
 
     <TextView
+        android:id="@+id/mars_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
@@ -14,5 +15,16 @@
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="32dp"
         android:text="Mars age:"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:textColor="#fff"
+        android:textSize="64dp"
+        android:text="23 Sols, that is 12 Mars years"
+        />
 
 </RelativeLayout>

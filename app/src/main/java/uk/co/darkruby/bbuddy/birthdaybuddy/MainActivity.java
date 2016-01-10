@@ -86,11 +86,11 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 return true;
             }
-            case R.id.action_import_contacts: {
-                Toast.makeText(this, "Import", Toast.LENGTH_SHORT).show();
-                this.importContactsBirthdays();
-                return  true;
-            }
+//            case R.id.action_import_contacts: {
+//                Toast.makeText(this, "Import", Toast.LENGTH_SHORT).show();
+//                this.importContactsBirthdays();
+//                return  true;
+//            }
             default: {
                 return super.onOptionsItemSelected(item);
             }

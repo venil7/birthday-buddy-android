@@ -3,18 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/moon_landscape">
+    android:background="@drawable/dog_background">
 
     <TextView
-        android:id="@+id/moon_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:textColor="#FFF"
+        android:textColor="#000"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="32dp"
-        android:text="Moon age:"/>
+        android:text="Dog age:"/>
 
     <TextView
         android:layout_height="wrap_content"
@@ -22,9 +21,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:textSize="64dp"
-        android:text="23 Lunar months, in fact it's the same as 23 lunar years"
+        android:text="19 Human years"
         />
 
 </RelativeLayout>

@@ -1,10 +1,14 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.MartianDataBinding;
 
 public class MarsDataProvider extends BirthdayDataProviderBase {
     private final int YEAR_LENGTH = 687;
@@ -17,7 +21,10 @@ public class MarsDataProvider extends BirthdayDataProviderBase {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.martian_data, container, false);
+        View view = inflater.inflate(R.layout.martian_data, container, false);
+        MartianDataBinding binding = DataBindingUtil.bind(view);
+        binding.setData(this);
+        return view;
     }
 
     public int getMartianYears() {
@@ -25,7 +32,12 @@ public class MarsDataProvider extends BirthdayDataProviderBase {
         return days / YEAR_LENGTH;
     }
 
-    public double getMartianSols() {
-        return this.getDaysTillNow() * SOLS_PER_DAY;
+    public int getMartianSols() {
+        return (int) Math.round(this.getDaysTillNow() * SOLS_PER_DAY);
+    }
+
+    @Override
+    public String getMessage() {
+        return String.format("%d Sols, that is %d Mars years", this.getMartianSols(), this.getMartianYears());
     }
 }

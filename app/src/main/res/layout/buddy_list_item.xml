@@ -7,7 +7,7 @@
         android:id="@+id/avatar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/face_monkey"
+        android:src="@drawable/mature_man"
         android:layout_alignBottom="@+id/rowValue" />
 
     <TextView

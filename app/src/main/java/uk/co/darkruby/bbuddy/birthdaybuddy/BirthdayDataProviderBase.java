@@ -29,4 +29,8 @@ public abstract class BirthdayDataProviderBase
     public Fragment getFragment() {
         return this;
     }
+
+    public String getMessage() {
+        return "no data";
+    }
 }

@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.co.darkruby.bbuddy.birthdaybuddy">
 
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,8 +21,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BuddyDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait" />
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
     </application>
 
 </manifest>

@@ -20,7 +20,7 @@
             android:textColor="#000"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="32dp"
-            android:text="Dog age:"/>
+            android:text="Dog"/>
 
         <TextView
             android:layout_height="wrap_content"

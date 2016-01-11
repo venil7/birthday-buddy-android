@@ -23,7 +23,7 @@
             android:textColor="#000"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="32dp"
-            android:text="Mars age:"
+            android:text="Mars"
         />
 
         <TextView

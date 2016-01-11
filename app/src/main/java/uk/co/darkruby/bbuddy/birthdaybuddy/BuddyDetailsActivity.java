@@ -1,8 +1,10 @@
 package uk.co.darkruby.bbuddy.birthdaybuddy;
 
+import android.app.ActionBar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Window;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,8 @@ public class BuddyDetailsActivity extends AppCompatActivity {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), getProviders());
 
         pager.setAdapter(adapter);
+
+        getSupportActionBar().setTitle("How old is " + this.buddy.name + "?");
     }
 
     ArrayList<BirthdayDataProvider> getProviders() {

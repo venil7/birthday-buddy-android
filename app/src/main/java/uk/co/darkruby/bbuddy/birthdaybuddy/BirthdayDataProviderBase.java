@@ -18,10 +18,19 @@ public abstract class BirthdayDataProviderBase
         return Days.daysBetween(then, now).getDays();
     }
 
-    public BirthdayDataProviderBase(BuddyModel buddy) {
+    public BirthdayDataProviderBase () {
         super();
-        this.buddy = buddy;
         this.now = new DateTime();
+    }
+
+    public BirthdayDataProviderBase(BuddyModel buddy) {
+        this();
+        this.setBuddy(buddy);
+    }
+
+
+    public void setBuddy(BuddyModel buddy) {
+        this.buddy = buddy;
         this.then = new DateTime(this.buddy.birthdate);
     }
 

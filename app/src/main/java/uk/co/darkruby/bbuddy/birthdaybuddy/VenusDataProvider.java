@@ -9,8 +9,15 @@ import android.view.ViewGroup;
 
 import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.VenusDataBinding;
 
-public class VenusDataProvider
-        extends BirthdayDataProviderBase {
+public class VenusDataProvider extends BirthdayDataProviderBase {
+
+    public VenusDataProvider(BuddyModel buddy) {
+        super(buddy);
+    }
+
+    public VenusDataProvider() {
+        super();
+    }
 
     @Nullable
     @Override
@@ -23,10 +30,6 @@ public class VenusDataProvider
 
     private final int YEAR_LENGTH = 225;
     private final int DAY_LENGTH = 243;
-
-    public VenusDataProvider(BuddyModel buddy) {
-        super(buddy);
-    }
 
     public int getVenetianYears() {
         return this.getDaysTillNow() / YEAR_LENGTH;

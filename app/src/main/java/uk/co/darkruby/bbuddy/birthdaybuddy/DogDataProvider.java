@@ -9,8 +9,15 @@ import android.view.ViewGroup;
 
 import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.DogDataBinding;
 
-public class DogDataProvider
-        extends BirthdayDataProviderBase {
+public class DogDataProvider extends BirthdayDataProviderBase {
+
+    public DogDataProvider() {
+        super();
+    }
+
+    public DogDataProvider(BuddyModel buddy) {
+        super(buddy);
+    }
 
     @Nullable
     @Override
@@ -19,10 +26,6 @@ public class DogDataProvider
         DogDataBinding binding = DataBindingUtil.bind(view);
         binding.setData(this);
         return view;
-    }
-
-    public DogDataProvider(BuddyModel buddy) {
-        super(buddy);
     }
 
     public int getDogYears() {

@@ -9,8 +9,15 @@ import android.view.ViewGroup;
 
 import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.CatDataBinding;
 
-public class CatDataProvider
-        extends BirthdayDataProviderBase {
+public class CatDataProvider extends BirthdayDataProviderBase {
+
+    public CatDataProvider() {
+        super();
+    }
+
+    public CatDataProvider(BuddyModel buddy) {
+        super(buddy);
+    }
 
     @Nullable
     @Override
@@ -19,10 +26,6 @@ public class CatDataProvider
         CatDataBinding binding = DataBindingUtil.bind(view);
         binding.setData(this);
         return view;
-    }
-
-    public CatDataProvider(BuddyModel buddy) {
-        super(buddy);
     }
 
     public int getCatYears() {

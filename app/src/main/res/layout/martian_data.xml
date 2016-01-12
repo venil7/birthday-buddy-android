@@ -21,9 +21,13 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:textColor="#000"
+            android:shadowColor="#fff"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="32dp"
-            android:text="Mars"
+            android:text="On Mars"
         />
 
         <TextView

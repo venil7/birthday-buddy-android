@@ -11,14 +11,6 @@ import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.DogDataBinding;
 
 public class DogDataProvider extends BirthdayDataProviderBase {
 
-    public DogDataProvider() {
-        super();
-    }
-
-    public DogDataProvider(BuddyModel buddy) {
-        super(buddy);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

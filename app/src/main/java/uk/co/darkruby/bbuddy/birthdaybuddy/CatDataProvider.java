@@ -11,14 +11,6 @@ import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.CatDataBinding;
 
 public class CatDataProvider extends BirthdayDataProviderBase {
 
-    public CatDataProvider() {
-        super();
-    }
-
-    public CatDataProvider(BuddyModel buddy) {
-        super(buddy);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

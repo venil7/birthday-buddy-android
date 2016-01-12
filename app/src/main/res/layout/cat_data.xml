@@ -20,7 +20,7 @@
             android:textColor="#FFF"
             android:fontFamily="sans-serif-smallcaps"
             android:textSize="32dp"
-            android:text="Cat"/>
+            android:text="As a Cat"/>
 
         <TextView
             android:layout_height="wrap_content"

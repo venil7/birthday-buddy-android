@@ -12,14 +12,6 @@ import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.MoonDataBinding;
 public class MoonDataProvider extends BirthdayDataProviderBase {
     private final int YEAR_LENGTH = 29;
 
-    public MoonDataProvider() {
-        super();
-    }
-
-    public MoonDataProvider(BuddyModel buddy) {
-        super(buddy);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

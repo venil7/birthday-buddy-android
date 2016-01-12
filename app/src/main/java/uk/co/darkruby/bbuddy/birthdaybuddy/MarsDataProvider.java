@@ -14,14 +14,6 @@ public class MarsDataProvider extends BirthdayDataProviderBase {
     private final int YEAR_LENGTH = 687;
     private final double SOLS_PER_DAY = 0.973244296714;
 
-    public MarsDataProvider() {
-        super();
-    }
-
-    public MarsDataProvider(BuddyModel buddy) {
-        super(buddy);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

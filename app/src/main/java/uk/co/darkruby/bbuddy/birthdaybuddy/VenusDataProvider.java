@@ -11,14 +11,6 @@ import uk.co.darkruby.bbuddy.birthdaybuddy.databinding.VenusDataBinding;
 
 public class VenusDataProvider extends BirthdayDataProviderBase {
 
-    public VenusDataProvider(BuddyModel buddy) {
-        super(buddy);
-    }
-
-    public VenusDataProvider() {
-        super();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

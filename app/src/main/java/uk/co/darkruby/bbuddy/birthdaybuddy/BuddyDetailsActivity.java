@@ -29,15 +29,24 @@ public class BuddyDetailsActivity extends AppCompatActivity {
     }
 
     ArrayList<BirthdayDataProvider> getProviders() {
-        final BuddyModel buddy = this.buddy;
-
+        final BuddyModel buddyModel = this.buddy;
         ArrayList<BirthdayDataProvider> providers = new ArrayList() {
             {
-                add(new MarsDataProvider(buddy));
-                add(new MoonDataProvider(buddy));
-                add(new VenusDataProvider(buddy));
-                add(new CatDataProvider(buddy));
-                add(new DogDataProvider(buddy));
+                add(new MarsDataProvider() {{
+                    setBuddy(buddyModel);
+                }});
+                add(new MoonDataProvider() {{
+                    setBuddy(buddyModel);
+                }});
+                add(new VenusDataProvider() {{
+                    setBuddy(buddyModel);
+                }});
+                add(new CatDataProvider() {{
+                    setBuddy(buddyModel);
+                }});
+                add(new DogDataProvider() {{
+                    setBuddy(buddyModel);
+                }});
             }
         };
 
